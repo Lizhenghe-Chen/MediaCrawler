@@ -1,0 +1,12 @@
+uv run main.py \
+  --platform xhs \
+  --lt qrcode \
+  --type search \
+  --keywords "大疆pocket4" \
+  --sort_type time_descending \
+  --max_notes_count 20 \
+  --max_comments_count_singlenotes 10 \
+  --max_concurrency_num 6 \
+  --get_sub_comment false \
+  --get_comment false \
+  --headless true
