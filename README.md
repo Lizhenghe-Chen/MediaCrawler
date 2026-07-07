@@ -2,6 +2,24 @@
 
 <div align="center">
 
+### 🤝 特别感谢白金赞助商
+
+<a href="https://www.browseract.com/?co-from=mediacrawler&redirect=https://github.com/browser-act/skills/tree/main" target="_blank">
+  <img src="docs/static/images/browseract.png" alt="BrowserAct" width="400">
+</a>
+
+<br>
+
+<a href="https://www.browseract.com/?co-from=mediacrawler&redirect=https://github.com/browser-act/skills/tree/main" target="_blank">
+<small>BrowserAct 是面向 AI Agent 的浏览器自动化工具，支持反机器人拦截应对、受阻时人工接管、多任务并行隔离和多账号独立管理，帮助 Agent 更稳定地完成真实网页任务。</small>
+</a>
+
+</div>
+
+---
+
+<div align="center">
+
 <a href="https://trendshift.io/repositories/8291" target="_blank">
   <img src="https://trendshift.io/api/badge/repositories/8291" alt="NanmiCoder%2FMediaCrawler | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/>
 </a>
@@ -157,17 +175,41 @@ uv run main.py --help
 
 MediaCrawler 提供了基于 Web 的可视化操作界面，无需命令行也能轻松使用爬虫功能。
 
-#### 启动 WebUI 服务
+#### 开发调试（推荐）
+
+开发时需要同时启动后端 API 服务和前端 Vite 开发服务器：
 
 ```shell
-# 启动 API 服务器（默认端口 8080）
+# 终端 1：启动 API 服务器（默认端口 8080）
 uv run uvicorn api.main:app --port 8080 --reload
 
-# 或者使用模块方式启动
-uv run python -m api.main
+# 终端 2：启动前端开发服务器
+cd webui
+npm install
+npm run dev        # 默认在 5173 端口启动，并代理 /api 到 8080
 ```
 
-启动成功后，访问 `http://localhost:8080` 即可打开 WebUI 界面。
+启动成功后，访问 `http://localhost:5173/` 即可打开 WebUI 界面。
+
+> 首次打开会进行环境检测（调用 `/api/env/check`），请确保后端服务已启动。如果检测失败，可点击「跳过检测」临时跳过。
+
+#### 构建生产资源
+
+如果希望通过 API 服务器直接提供 WebUI 静态资源，需要先构建前端：
+
+```shell
+cd webui
+npm install
+npm run build      # 产物输出到 api/webui/
+```
+
+构建完成后，只需启动 API 服务器：
+
+```shell
+uv run uvicorn api.main:app --port 8080 --reload
+```
+
+然后访问 `http://localhost:8080` 即可。
 
 #### WebUI 功能特性
 
@@ -259,15 +301,15 @@ MediaCrawler 支持多种数据存储方式，包括 CSV、JSON、JSONL、Excel�
 <br>
 TikHub.io 提供 900+ 高稳定性数据接口，覆盖 TK、DY、XHS、Y2B、Ins、X 等 14+ 海内外主流平台，支持用户、内容、商品、评论等多维度公开数据 API，并配套 4000 万+ 已清洗结构化数据集，使用邀请码 <code>cfzyejV9</code> 注册并充值，即可额外获得 $2 赠送额度。
 </a>
-
 <br>
 <br>
 
-<a href="https://legionproxy.io/?utm_source=github&utm_campaign=mediacrawler">
-<img width="420" src="docs/static/images/legionproxy_banner.jpg" alt="LegionProxy residential proxy sponsor banner">
-<br>
-LegionProxy 专为账号注册与自动化场景提供住宅代理网络，覆盖 74M+ 真实住宅 IP、195+ 国家，支持 HTTP/3 高速连接，价格 $0.60/GB 起。
+<a href="https://www.atlascloud.ai/?utm_source=github&utm_medium=link&utm_campaign=mei%27da%27c%27rmeidacrawler">
+<img width="500" alt="Atlas Cloud" src="docs/static/images/atlas_cloud_logo_black.png#gh-light-mode-only">
+<img width="500" alt="Atlas Cloud" src="docs/static/images/atlas_cloud_logo_white.png#gh-dark-mode-only">
 </a>
+<br>
+<a href="https://www.atlascloud.ai/?utm_source=github&utm_medium=link&utm_campaign=mei%27da%27c%27rmeidacrawler">Atlas Cloud</a> 是一个全模态 AI 推理平台，让开发者通过统一的 AI API 访问视频生成、图像生成和 LLM API，无需分别维护多个厂商集成，即可调用 300+ 精选模型。Atlas Cloud 最新推出 <a href="https://www.atlascloud.ai/console/coding-plan">coding plan 优惠</a>，为开发者提供更具性价比的 API 访问预算。
 
 ---
 
